@@ -118,7 +118,7 @@
         <div class="grid-row">
             <div class="col-md-3 col-sm-3 col-xs-12 col-lg-2" style="min-width: 110px; max-width: 110px;"><img class="img_100" style="max-width: 86px;" src="https://iudigital.instructure.com/courses/17648/files/5422599/preview" alt="" data-api-endpoint="https://iudigital.instructure.com/api/v1/courses/17648/files/5422599" data-api-returntype="File" /></div>
             <div class="col-md-9 col-sm-8 col-xs-12 col-lg-10">
-                <h2>Instrucciones</h2>
+                <h2>Instrucciones ⚙️</h2>
                 <div>
                     <ul>
                         <li>
@@ -138,46 +138,19 @@
         <div class="grid-row">
             <div class="col-md-3 col-sm-3 col-xs-12 col-lg-2" style="min-width: 110px; max-width: 110px;"><img class="img_100" style="max-width: 86px;" src="https://iudigital.instructure.com/courses/17648/files/5422615/preview" alt="" data-api-endpoint="https://iudigital.instructure.com/api/v1/courses/17648/files/5422615" data-api-returntype="File" /></div>
             <div class="col-md-9 col-sm-8 col-xs-12 col-lg-10">
-                <h2>C&oacute;mo entregar la actividad</h2>
+                <h2>Integrantes 😎</h2>
                 <div style="padding-left: 40px;">
-                    <p>La actividad debe ser entregada en las siguientes condiciones.</p>
+                    <p>Los integrantes del Grupo 5 son:</p>
                     <ul>
                         <li>
-                            <p>Los estudiantes deben continuar con la misma conformaci&oacute;n de grupo que fue entregada en la actividad.</p>
+                            <p>John Eduar Pérez Cardona</p>
                         </li>
                         <li>
-                            <p>Desarrollar la implementaci&oacute;n de los diagramas realizados en la actividad 1, esta implementaci&oacute;n se debe de realizar mediante un repositorio de Github, se debe de entregar el link del repositorio un documento de Word con normas APA .</p>
+                            <p>Juan Esteban Osorno Hurtado</p>
                         </li>
                         <li>
-                            <p>Realizar al documento portada con los integrantes del grupo, incluir la introducci&oacute;n y determinar la conclusi&oacute;n de la experiencia en el desarrollo de la actividad y c&oacute;mo apoya en el mundo laboral.</p>
-                        </li>
-                        <li>
-                            <p>El grupo debe conformarse y realizar la entrega mediante la plataforma trabajo en la plataforma Canvas, solo el l&iacute;der del grupo entrega la actividad, el docente del grupo orientar&aacute; como realizar los grupos en las sesiones sincr&oacute;nicas.</p>
+                            <p>Cristian Sanchez</p>
                         </li>
                     </ul>
-                    <p>&nbsp;</p>
-                    <p>Guarda los documentos con la siguiente nomenclatura:</p>
-                    <div style="border-left: 3px solid steelblue; margin: 10px; margin-left: 30px; padding: 5px;"><strong style="color: steelblue;">Ejemplo</strong><br />Apellido_Nombre_Actividad2</div>
-                </div>
-            </div>
-        </div>
-        <div>&nbsp;</div>
-        <div class="grid-row">
-            <div class="col-md-3 col-sm-3 col-xs-12 col-lg-2" style="min-width: 110px; max-width: 110px;"><img class="img_100" style="max-width: 86px;" src="https://iudigital.instructure.com/courses/17648/files/5422533/preview" alt="" data-api-endpoint="https://iudigital.instructure.com/api/v1/courses/17648/files/5422533" data-api-returntype="File" /></div>
-            <div class="col-md-9 col-sm-9 col-xs-12 col-lg-10">
-                <div class="alert_2019 alert-warning_2019">
-                    <p>Finalmente, haz clic en el bot&oacute;n <strong>Cargar Tarea</strong>, sube tu archivo y presiona el bot&oacute;n Enviar para remitirlo a tu asesor con el fin de que lo eval&uacute;e y retroalimente.</p>
-                </div>
-            </div>
-        </div>
-        <div>&nbsp;</div>
-        <div class="grid-row">
-            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                <div class="alert_2019 alert-info_2019">
-                    <p style="text-align: center; color: #7e8c8d;"><em> A continuaci&oacute;n, se presentan los criterios que se tendr&aacute;n en cuenta para evaluar la actividad de aprendizaje que te permitir&aacute; retroalimentar los conocimientos de esta unidad. </em></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div>&nbsp;</div>
+                    
 </div>
