@@ -1,21 +1,25 @@
-public class Empleado {
-    //Atributos
+import java.util.Date;
+
+public abstract class Empleado {
+    // Atributos
     private String nombre;
     private String apellido;
-    private int id;
+    private String id;
     private String departamento;
     private String tipoEmpleado;
+    private Date fechaInicio;
 
-    //Constructor
-    public Empleado(String nombre, String apellido, int id, String departamento, String tipoEmpleado) {
+    // Constructor
+    public Empleado(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = id;
         this.departamento = departamento;
         this.tipoEmpleado = tipoEmpleado;
+        this.fechaInicio = fechaInicio;
     }
 
-    //Getters y Setters
+    // Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -30,34 +34,39 @@ public class Empleado {
         this.apellido = apellido;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     public String getDepartamento() {
         return departamento;
     }
-        public void setDepartamento(String departamento) {
+    public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
 
     public String getTipoEmpleado() {
         return tipoEmpleado;
     }
-        public void setTipoEmpleado(String tipoEmpleado) {
+    public void setTipoEmpleado(String tipoEmpleado) {
         this.tipoEmpleado = tipoEmpleado;
     }
 
-    //Métodos
-    //Método para cambiar el departamento de un empleado
-    public void cambiarDepartamento(String nuevoDepartamento) {
-        this.departamento = nuevoDepartamento;
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
-    //Método para cambiar el tipo de empleado
+    // Métodos
+    // Método abstracto para cambiar el departamento de un empleado
+    public abstract void cambiarDepartamento(String nuevoDepartamento);
+
+    // Método para cambiar el tipo de empleado
     public void cambiarTipoEmpleado(String nuevoTipoEmpleado) {
         this.tipoEmpleado = nuevoTipoEmpleado;
     }
