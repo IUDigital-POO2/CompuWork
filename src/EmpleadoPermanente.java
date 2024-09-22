@@ -8,6 +8,10 @@ public class EmpleadoPermanente extends Empleado{
 
     @Override
     public void cambiarDepartamento(String nuevoDepartamento) {
+        if (nuevoDepartamento == null || nuevoDepartamento.isEmpty()) {
+            System.out.println("El nuevo departamento no puede ser nulo o vacío");
+            return;
+        }
         setDepartamento(nuevoDepartamento);
     }
 }
