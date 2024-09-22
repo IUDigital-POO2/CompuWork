@@ -14,6 +14,7 @@ public class Main {
 
         //Cambiar departamento
         empleado1.cambiarDepartamento("Recursos Humanos");
+        empleado3.cambiarDepartamento("Finanzas");
 
 
         //Mostar los datos del empleado
