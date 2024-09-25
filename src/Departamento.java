@@ -1,11 +1,6 @@
 import java.util.ArrayList;
 
 public class Departamento {
-
-
-
-}
-
     private String nombreDepartamento;
     private String descripcion;
     private String jefe;
