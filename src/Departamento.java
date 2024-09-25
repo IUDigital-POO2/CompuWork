@@ -10,7 +10,7 @@ public class Departamento {
         this.nombreDepartamento = nombreDepartamento;
         this.descripcion = descripcion;
         this.jefe = jefe;
-        //this.empleados = new ArrayList<>();
+        this.empleados = new ArrayList<>();
     }
 
     public String getNombreDepartamento() {
@@ -67,4 +67,3 @@ public class Departamento {
         throw new Exception("Empleado no encontrado");
     }
 }
-
