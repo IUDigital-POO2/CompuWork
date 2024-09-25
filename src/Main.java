@@ -24,5 +24,7 @@ public class Main {
         System.out.println("Empleado " + empleado4.getId() + ": " + empleado4.getNombre() + " " + empleado4.getApellido() + " - " + empleado4.getDepartamento());
         System.out.println("Empleado " + empleado5.getId() + ": " + empleado5.getNombre() + " " + empleado5.getApellido() + " - " + empleado5.getDepartamento());
 
+
+
     }
 }
