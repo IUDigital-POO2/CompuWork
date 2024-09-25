@@ -1,3 +1,9 @@
+
+public class Empleado {
+
+
+}
+
 import java.util.Date;
 
 public abstract class Empleado {
@@ -80,3 +86,4 @@ public abstract class Empleado {
         this.tipoEmpleado = nuevoTipoEmpleado;
     }
 }
+
