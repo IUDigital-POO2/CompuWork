@@ -149,7 +149,7 @@
                             <p>Juan Esteban Osorno Hurtado</p>
                         </li>
                         <li>
-                            <p>Cristian Sanchez</p>
+                            <p>Cristian Vargas Sanchez</p>
                         </li>
                     </ul>
                     
