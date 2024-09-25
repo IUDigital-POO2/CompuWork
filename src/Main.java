@@ -42,10 +42,3 @@ public class Main {
         System.out.println("\nReporte de Desempeño del Departamento " + departamentoIT.getNombreDepartamento() + ":");
         System.out.println(ReporteDesempenio.generarReporte(departamentoIT));
     }
-
-}
-
-
-    }
-
-}
