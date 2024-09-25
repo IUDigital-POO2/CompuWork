@@ -1,9 +1,3 @@
-
-public class Empleado {
-
-
-}
-
 import java.util.Date;
 
 public abstract class Empleado {
