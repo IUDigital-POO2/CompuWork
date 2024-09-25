@@ -1,14 +1,16 @@
+import java.util.ArrayList;
+
 public class Departamento {
     private String nombreDepartamento;
-    private String empleados;
     private String descripcion;
     private String jefe;
+    private ArrayList<Empleado> empleados;
 
-    public Departamento(String nombreDepartamento, String empleados, String descripcion, String jefe) {
+    public Departamento(String nombreDepartamento, String descripcion, String jefe) {
         this.nombreDepartamento = nombreDepartamento;
-        this.empleados = empleados;
         this.descripcion = descripcion;
         this.jefe = jefe;
+        //this.empleados = new ArrayList<>();
     }
 
     public String getNombreDepartamento() {
@@ -17,14 +19,6 @@ public class Departamento {
 
     public void setNombreDepartamento(String nombreDepartamento) {
         this.nombreDepartamento = nombreDepartamento;
-    }
-
-    public String getEmpleados() {
-        return empleados;
-    }
-
-    public void setEmpleados(String empleados) {
-        this.empleados = empleados;
     }
 
     public String getDescripcion() {
@@ -43,6 +37,10 @@ public class Departamento {
         this.jefe = jefe;
     }
 
+    public ArrayList<Empleado> getEmpleados() {
+        return empleados;
+    }
+
     @Override
     public String toString() {
         return "Departamento{" +
@@ -51,5 +49,21 @@ public class Departamento {
                 ", descripcion='" + descripcion + '\'' +
                 ", jefe='" + jefe + '\'' +
                 '}';
+    }
+
+    // Agregar un empleado al departamento
+    public void agregarEmpleado(Empleado empleado) {
+        empleados.add(empleado);
+    }
+
+    // Eliminar un empleado del departamento
+    public void eliminarEmpleado(String id) throws Exception {
+        for (Empleado e : empleados) {
+            if (e.getId() == id) {
+                empleados.remove(e);
+                return;
+            }
+        }
+        throw new Exception("Empleado no encontrado");
     }
 }
