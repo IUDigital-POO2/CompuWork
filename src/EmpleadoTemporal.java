@@ -5,8 +5,8 @@ public class EmpleadoTemporal extends Empleado{
     private Date fechaFin;
 
     //Constructor
-    public EmpleadoTemporal(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio, Date fechaFin) {
-        super(nombre, apellido, id, departamento, tipoEmpleado, fechaInicio);
+    public EmpleadoTemporal(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio, Date fechaFin, ReporteDesempenio desempenio) {
+        super(nombre, apellido, id, departamento, tipoEmpleado, fechaInicio, desempenio);
         this.fechaFin = fechaFin;
     }
 

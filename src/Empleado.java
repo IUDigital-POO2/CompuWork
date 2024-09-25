@@ -8,15 +8,17 @@ public abstract class Empleado {
     private String departamento;
     private String tipoEmpleado;
     private Date fechaInicio;
+    private ReporteDesempenio desempenio;
 
     // Constructor
-    public Empleado(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio) {
+    public Empleado(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio, ReporteDesempenio desempenio) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = id;
         this.departamento = departamento;
         this.tipoEmpleado = tipoEmpleado;
         this.fechaInicio = fechaInicio;
+        this.desempenio = desempenio;
     }
 
     // Getters y Setters
@@ -60,6 +62,13 @@ public abstract class Empleado {
     }
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
+    }
+
+    public ReporteDesempenio getDesempenio() {
+        return desempenio;
+    }
+    public void setDesempenio(ReporteDesempenio desempenio) {
+        this.desempenio = desempenio;
     }
 
     // Métodos
