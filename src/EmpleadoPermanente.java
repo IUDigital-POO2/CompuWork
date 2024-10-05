@@ -2,8 +2,8 @@ import java.util.Date;
 
 public class EmpleadoPermanente extends Empleado{
 
-    public EmpleadoPermanente(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio, ReporteDesempenio desempenio) {
-        super(nombre, apellido, id, departamento, tipoEmpleado, fechaInicio, desempenio);
+    public EmpleadoPermanente(String nombre, String apellido, String id,String tipoEmpleado ,Date fechaInicio, ReporteDesempenio desempenio) {
+        super(nombre, apellido, id, tipoEmpleado, fechaInicio, desempenio);
     }
 
     @Override
@@ -12,6 +12,6 @@ public class EmpleadoPermanente extends Empleado{
             System.out.println("El nuevo departamento no puede ser nulo o vacío");
             return;
         }
-        setDepartamento(nuevoDepartamento);
+        //setDepartamento(nuevoDepartamento);
     }
 }
