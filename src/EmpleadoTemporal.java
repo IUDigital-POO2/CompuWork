@@ -5,8 +5,8 @@ public class EmpleadoTemporal extends Empleado{
     private Date fechaFin;
 
     //Constructor
-    public EmpleadoTemporal(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio, Date fechaFin, ReporteDesempenio desempenio) {
-        super(nombre, apellido, id, departamento, tipoEmpleado, fechaInicio, desempenio);
+    public EmpleadoTemporal(String nombre, String apellido, String id, String tipoEmpleado, Date fechaInicio, Date fechaFin, ReporteDesempenio desempenio) {
+        super(nombre, apellido, id, tipoEmpleado, fechaInicio, desempenio);
         this.fechaFin = fechaFin;
     }
 
@@ -26,7 +26,7 @@ public class EmpleadoTemporal extends Empleado{
             System.out.println("El nuevo departamento no puede ser nulo o vacío");
             return;
         }
-        setDepartamento(nuevoDepartamento);
+        //setDepartamento(nuevoDepartamento);
     }
 
 }

@@ -5,17 +5,26 @@ public abstract class Empleado {
     private String nombre;
     private String apellido;
     private String id;
-    private String departamento;
     private String tipoEmpleado;
     private Date fechaInicio;
     private ReporteDesempenio desempenio;
 
-    // Constructor
-    public Empleado(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio, ReporteDesempenio desempenio) {
+    // Constructor con departamento
+    /*public Empleado(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio, ReporteDesempenio desempenio) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = id;
         this.departamento = departamento;
+        this.tipoEmpleado = tipoEmpleado;
+        this.fechaInicio = fechaInicio;
+        this.desempenio = desempenio;
+    }*/
+
+    // Constructor  departamento
+    public Empleado(String nombre, String apellido, String id, String tipoEmpleado, Date fechaInicio, ReporteDesempenio desempenio) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.id = id;
         this.tipoEmpleado = tipoEmpleado;
         this.fechaInicio = fechaInicio;
         this.desempenio = desempenio;
@@ -41,13 +50,6 @@ public abstract class Empleado {
     }
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
     }
 
     public String getTipoEmpleado() {

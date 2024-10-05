@@ -1,18 +1,22 @@
 import java.util.ArrayList;
 
 public class Departamento {
+    private String id;
     private String nombreDepartamento;
     private String descripcion;
     private String jefe;
     private ArrayList<Empleado> empleados;
 
-    public Departamento(String nombreDepartamento, String descripcion, String jefe) {
+    public Departamento(String id, String nombreDepartamento, String descripcion, String jefe) {
+        this.id = id;
         this.nombreDepartamento = nombreDepartamento;
         this.descripcion = descripcion;
         this.jefe = jefe;
         this.empleados = new ArrayList<>();
     }
-
+    // Getters y Setters
+    public String getId() {return id;}
+    public void setId(String id) {this.id = id;}
     public String getNombreDepartamento() {
         return nombreDepartamento;
     }
@@ -41,14 +45,8 @@ public class Departamento {
         return empleados;
     }
 
-    @Override
-    public String toString() {
-        return "Departamento{" +
-                "nombreDepartamento='" + nombreDepartamento + '\'' +
-                ", empleados='" + empleados + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", jefe='" + jefe + '\'' +
-                '}';
+    public void setEmpleados(ArrayList<Empleado> empleados) {
+        this.empleados = empleados;
     }
 
     // Agregar un empleado al departamento
@@ -59,7 +57,8 @@ public class Departamento {
     // Eliminar un empleado del departamento
     public void eliminarEmpleado(String id) throws Exception {
         for (Empleado e : empleados) {
-            if (e.getId() == id) {
+            if (e.getId() == 
+                    id) {
                 empleados.remove(e);
                 return;
             }
