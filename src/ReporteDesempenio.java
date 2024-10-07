@@ -1,8 +1,9 @@
 import java.util.List;
 
-class ReporteDesempenio {
+public class ReporteDesempenio {
     private String empleadoId;
     private double desempenio; // Un valor entre 0 y 100
+
 
     public ReporteDesempenio(String empleadoId, double desempenio) {
         this.empleadoId = empleadoId;
@@ -21,14 +22,15 @@ class ReporteDesempenio {
         this.desempenio = desempenio;
     }
 
+
+
     public static double calcularPromedioDesempenio(List<Empleado> empleados) {
         double suma = 0;
         int count = 0;
 
         for (Empleado empleado : empleados) {
-            // Suponiendo que ReporteDesempenio está en el empleado
             if (null != empleado.getReporteDesempenio()) {
-                suma = suma + empleado.getReporteDesempenio().getDesempenio();
+                suma += empleado.getReporteDesempenio().getDesempenio();
                 count++;
             }
         }

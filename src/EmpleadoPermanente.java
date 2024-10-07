@@ -2,8 +2,8 @@ import java.util.Date;
 
 public class EmpleadoPermanente extends Empleado{
 
-    public EmpleadoPermanente(String nombre, String apellido, String id,String tipoEmpleado ,Date fechaInicio, ReporteDesempenio desempenio) {
-        super(nombre, apellido, id, tipoEmpleado, fechaInicio, desempenio);
+    public EmpleadoPermanente(String nombre, String apellido, String id,String tipoEmpleado ,Date fechaInicio, ReporteDesempenio reporteDesempenio) {
+        super(nombre, apellido, id, tipoEmpleado, fechaInicio, reporteDesempenio);
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Main {
     private static List<Empleado> empleados = new ArrayList<>();
@@ -274,10 +275,9 @@ public class Main {
         String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del empleado:");
         Empleado empleado = buscarEmpleadoPorId(idEmpleado);
         if (empleado != null) {
-            String desempeñoStr = JOptionPane.showInputDialog("Ingrese el desempeño del empleado (0-100):");
-            int desempeño = Integer.parseInt(desempeñoStr);
-            // Aquí puedes actualizar el desempeño en la lógica correspondiente
-            empleado.getReporteDesempenio().setDesempenio(desempeño);
+            String desempenioStr = JOptionPane.showInputDialog("Ingrese el desempeño del empleado (0-100):");
+            int desempenio = Integer.parseInt(desempenioStr);
+            empleado.getReporteDesempenio().setDesempenio(desempenio);
             JOptionPane.showMessageDialog(null, "Desempeño actualizado para el empleado " + empleado.getNombre());
         } else {
             JOptionPane.showMessageDialog(null, "Empleado no encontrado.");
@@ -289,14 +289,12 @@ public class Main {
         String seleccion = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de reporte:", "Generar Reporte",
                 JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
-        // Crear un StringBuilder para acumular el reporte
         StringBuilder reporte = new StringBuilder();
 
         if ("Empleado".equals(seleccion)) {
             String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del empleado:");
             Empleado empleado = buscarEmpleadoPorId(idEmpleado);
             if (empleado != null) {
-                // Generar el reporte para el empleado
                 reporte.append("Reporte de Empleado\n");
                 reporte.append("ID: ").append(empleado.getId()).append("\n");
                 reporte.append("Nombre: ").append(empleado.getNombre()).append("\n");
@@ -304,28 +302,22 @@ public class Main {
                 reporte.append("Tipo: ").append(empleado.getTipoEmpleado()).append("\n");
                 reporte.append("Desempeño: ").append(empleado.getReporteDesempenio().getDesempenio()).append("\n");
             } else {
-                // Mostrar mensaje de error en el textArea
                 reporte.append("Empleado no encontrado.");
             }
         } else if ("Departamento".equals(seleccion)) {
             String idDepartamento = JOptionPane.showInputDialog("Ingrese el ID del departamento:");
             Departamento departamento = buscarDepartamentoPorId(idDepartamento);
             if (departamento != null) {
-                // Generar el reporte para el departamento
                 reporte.append("Reporte de Departamento\n");
                 reporte.append("ID: ").append(departamento.getId()).append("\n");
                 reporte.append("Nombre: ").append(departamento.getNombreDepartamento()).append("\n");
                 reporte.append("Descripción: ").append(departamento.getDescripcion()).append("\n");
                 reporte.append("Jefe: ").append(departamento.getJefe()).append("\n");
-
-                // Aquí podrías añadir más detalles como la lista de empleados del departamento
             } else {
-                // Mostrar mensaje de error en el textArea
                 reporte.append("Departamento no encontrado.");
             }
         }
 
-        // Finalmente, mostrar el contenido en el textArea
         textArea.setText(reporte.toString());
     }
 }
