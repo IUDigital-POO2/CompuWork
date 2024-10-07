@@ -27,8 +27,8 @@ class ReporteDesempenio {
 
         for (Empleado empleado : empleados) {
             // Suponiendo que ReporteDesempenio está en el empleado
-            if (empleado.getReporteDesempenio() != null) {
-                suma += empleado.getReporteDesempenio().getDesempenio();
+            if (null != empleado.getReporteDesempenio()) {
+                suma = suma + empleado.getReporteDesempenio().getDesempenio();
                 count++;
             }
         }
