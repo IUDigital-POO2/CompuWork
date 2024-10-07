@@ -5,8 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Main {
     private static List<Empleado> empleados = new ArrayList<>();
@@ -33,41 +33,20 @@ public class Main {
                 JMenuItem actualizarItem = new JMenuItem("Actualizar Empleado");
                 JMenuItem eliminarItem = new JMenuItem("Eliminar Empleado");
                 JMenuItem mostrarItem = new JMenuItem("Mostrar Empleados");
+                JMenuItem actualizarDesempenioItem = new JMenuItem("Actualizar Desempeño");
 
-// Agregar acciones a los ítems del menú
-                crearItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        crearEmpleado();
-                    }
-                });
-
-                actualizarItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        actualizarEmpleado();
-                    }
-                });
-
-                eliminarItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        eliminarEmpleado();
-                    }
-                });
-
-                mostrarItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        mostrarEmpleados();
-                    }
-                });
+                // Acciones para empleados
+                crearItem.addActionListener(e -> crearEmpleado());
+                actualizarItem.addActionListener(e -> actualizarEmpleado());
+                eliminarItem.addActionListener(e -> eliminarEmpleado());
+                mostrarItem.addActionListener(e -> mostrarEmpleados());
+                actualizarDesempenioItem.addActionListener(e -> actualizarDesempenio());
 
                 menuEmpleados.add(crearItem);
                 menuEmpleados.add(actualizarItem);
                 menuEmpleados.add(eliminarItem);
                 menuEmpleados.add(mostrarItem);
-                menuBar.add(menuEmpleados);
+                menuEmpleados.add(actualizarDesempenioItem);
 
                 JMenu menuDepartamentos = new JMenu("Departamentos");
                 JMenuItem crearDepartamentoItem = new JMenuItem("Crear Departamento");
@@ -76,47 +55,29 @@ public class Main {
                 JMenuItem asignarEmpleadoItem = new JMenuItem("Asignar Empleado a Departamento");
                 JMenuItem mostrarDepartamentosItem = new JMenuItem("Mostrar Departamentos");
 
-                crearDepartamentoItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        crearDepartamento();
-                    }
-                });
-
-                actualizarDepartamentoItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        actualizarDepartamento();
-                    }
-                });
-
-                eliminarDepartamentoItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        eliminarDepartamento();
-                    }
-                });
-
-                asignarEmpleadoItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        asignarEmpleadoADepartamento();
-                    }
-                });
-
-                mostrarDepartamentosItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        mostrarDepartamentos();
-                    }
-                });
+                // Acciones para departamentos
+                crearDepartamentoItem.addActionListener(e -> crearDepartamento());
+                actualizarDepartamentoItem.addActionListener(e -> actualizarDepartamento());
+                eliminarDepartamentoItem.addActionListener(e -> eliminarDepartamento());
+                asignarEmpleadoItem.addActionListener(e -> asignarEmpleadoADepartamento());
+                mostrarDepartamentosItem.addActionListener(e -> mostrarDepartamentos());
 
                 menuDepartamentos.add(crearDepartamentoItem);
                 menuDepartamentos.add(actualizarDepartamentoItem);
                 menuDepartamentos.add(eliminarDepartamentoItem);
                 menuDepartamentos.add(asignarEmpleadoItem);
                 menuDepartamentos.add(mostrarDepartamentosItem);
+
+                // Agregar menús a la barra de menús
+                menuBar.add(menuEmpleados);
                 menuBar.add(menuDepartamentos);
+
+                // Nuevo menú para reportes
+                JMenu menuReportes = new JMenu("Reportes");
+                JMenuItem generarReporteItem = new JMenuItem("Generar Reporte");
+                generarReporteItem.addActionListener(e -> generarReporte());
+                menuReportes.add(generarReporteItem);
+                menuBar.add(menuReportes);
 
                 frame.setJMenuBar(menuBar);
                 frame.add(panel);
@@ -147,19 +108,17 @@ public class Main {
                 String apellido = apellidoField.getText();
                 String id = idField.getText();
 
-
                 if (tipoEmpleado.equals("Permanente")) {
-                    EmpleadoPermanente empleado = new EmpleadoPermanente(nombre, apellido, id, "Permanente", new Date(), new ReporteDesempenio());
+                    EmpleadoPermanente empleado = new EmpleadoPermanente(nombre, apellido, id, "Permanente", new Date(), new ReporteDesempenio(id, 0)); // Inicializar con 0
                     empleados.add(empleado);
                 } else if (tipoEmpleado.equals("Temporal")) {
                     Date fechaFin = new Date(); // Puedes modificar esto para leer una fecha específica
-                    EmpleadoTemporal empleado = new EmpleadoTemporal(nombre, apellido, id, "Temporal", new Date(), fechaFin, new ReporteDesempenio());
+                    EmpleadoTemporal empleado = new EmpleadoTemporal(nombre, apellido, id, "Temporal", new Date(), fechaFin, new ReporteDesempenio(id, 0)); // Inicializar con 0
                     empleados.add(empleado);
                 }
             }
         }
     }
-
 
     private static void actualizarEmpleado() {
         String id = JOptionPane.showInputDialog("Ingrese el ID del empleado a actualizar:");
@@ -174,13 +133,10 @@ public class Main {
             JTextField apellidoField = new JTextField(empleado.getApellido());
             panel.add(apellidoField);
 
-
-
             int result = JOptionPane.showOptionDialog(null, panel, "Actualizar Empleado", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{"Aceptar", "Cancelar"}, "Aceptar");
             if (result == JOptionPane.OK_OPTION) {
                 empleado.setNombre(nombreField.getText());
                 empleado.setApellido(apellidoField.getText());
-
             }
         } else {
             JOptionPane.showMessageDialog(null, "Empleado no encontrado.");
@@ -199,12 +155,10 @@ public class Main {
         }
     }
 
-
-
     private static void mostrarEmpleados() {
         StringBuilder sb = new StringBuilder();
         for (Empleado empleado : empleados) {
-            sb.append(empleado.getId()).append(" - ").append(empleado.getNombre()).append(" ").append(empleado.getApellido()).append(" - ").append(" - ").append(empleado.getTipoEmpleado()).append("\n");
+            sb.append(empleado.getId()).append(" - ").append(empleado.getNombre()).append(" ").append(empleado.getApellido()).append(" - ").append(empleado.getTipoEmpleado()).append("\n");
         }
         textArea.setText(sb.toString());
     }
@@ -219,7 +173,6 @@ public class Main {
     }
 
     private static void crearDepartamento() {
-
         JPanel panel = new JPanel(new GridLayout(0, 2));
         panel.add(new JLabel("ID:"));
         JTextField idField = new JTextField();
@@ -246,8 +199,8 @@ public class Main {
     }
 
     private static void actualizarDepartamento() {
-        String idDepartamento = JOptionPane.showInputDialog("Ingrese el id del departamento a actualizar:");
-        Departamento departamento = buscarDepartamentoPorID(idDepartamento);
+        String idDepartamento = JOptionPane.showInputDialog("Ingrese el ID del departamento a actualizar:");
+        Departamento departamento = buscarDepartamentoPorId(idDepartamento);
 
         if (departamento != null) {
             JPanel panel = new JPanel(new GridLayout(0, 2));
@@ -273,8 +226,8 @@ public class Main {
     }
 
     private static void eliminarDepartamento() {
-        String idDepartamento = JOptionPane.showInputDialog("Ingrese el id del departamento a eliminar:");
-        Departamento departamento = buscarDepartamentoPorID(idDepartamento);
+        String id = JOptionPane.showInputDialog("Ingrese el ID del departamento a eliminar:");
+        Departamento departamento = buscarDepartamentoPorId(id);
 
         if (departamento != null) {
             departamentos.remove(departamento);
@@ -284,17 +237,32 @@ public class Main {
         }
     }
 
+    private static void mostrarDepartamentos() {
+        StringBuilder sb = new StringBuilder();
+        for (Departamento departamento : departamentos) {
+            sb.append(departamento.getId()).append(" - ").append(departamento.getNombreDepartamento()).append(" - ").append(departamento.getDescripcion()).append(" - Jefe: ").append(departamento.getJefe()).append("\n");
+        }
+        textArea.setText(sb.toString());
+    }
+
+    private static Departamento buscarDepartamentoPorId(String id) {
+        for (Departamento departamento : departamentos) {
+            if (departamento.getId().equals(id)) {
+                return departamento;
+            }
+        }
+        return null;
+    }
+
     private static void asignarEmpleadoADepartamento() {
         String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del empleado:");
         Empleado empleado = buscarEmpleadoPorId(idEmpleado);
-
         if (empleado != null) {
-            String idDepartamento = JOptionPane.showInputDialog("Ingrese el id del departamento:");
-            Departamento departamento = buscarDepartamentoPorID(idDepartamento);
-
+            String idDepartamento = JOptionPane.showInputDialog("Ingrese el ID del departamento:");
+            Departamento departamento = buscarDepartamentoPorId(idDepartamento);
             if (departamento != null) {
-                departamento.agregarEmpleado(empleado);
-                JOptionPane.showMessageDialog(null, "Empleado asignado al departamento.");
+                // Asignar empleado al departamento (aquí debes implementar la lógica para la asignación)
+                JOptionPane.showMessageDialog(null, "Empleado " + empleado.getNombre() + " asignado al departamento " + departamento.getNombreDepartamento());
             } else {
                 JOptionPane.showMessageDialog(null, "Departamento no encontrado.");
             }
@@ -303,26 +271,53 @@ public class Main {
         }
     }
 
-    private static void mostrarDepartamentos() {
-        StringBuilder sb = new StringBuilder();
-        for (Departamento departamento : departamentos) {
-            sb.append(departamento.getId()).append(" - ").append(departamento.getNombreDepartamento()).append(" - ").append(departamento.getDescripcion()).append(" - ").append(departamento.getJefe()).append("\n");
-            sb.append("Empleados:\n");
-            for (Empleado empleado : departamento.getEmpleados()) {
-                sb.append("  ").append(empleado.getId()).append(" - ").append(empleado.getNombre()).append(" ").append(empleado.getApellido()).append("\n");
-            }
+    private static void actualizarDesempenio() {
+        String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del empleado:");
+        Empleado empleado = buscarEmpleadoPorId(idEmpleado);
+        if (empleado != null) {
+            String desempenioStr = JOptionPane.showInputDialog("Ingrese el desempeño del empleado (0-100):");
+            int desempenio = Integer.parseInt(desempenioStr);
+            empleado.getReporteDesempenio().setDesempenio(desempenio);
+            JOptionPane.showMessageDialog(null, "Desempeño actualizado para el empleado " + empleado.getNombre());
+        } else {
+            JOptionPane.showMessageDialog(null, "Empleado no encontrado.");
         }
-        textArea.setText(sb.toString());
     }
 
-    private static Departamento buscarDepartamentoPorID(String idDepartamento) {
-        for (Departamento departamento : departamentos) {
-            if (departamento.getId().equals(idDepartamento)) {
-                return departamento;
+    private static void generarReporte() {
+        String[] opciones = {"Empleado", "Departamento"};
+        String seleccion = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de reporte:", "Generar Reporte",
+                JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+
+        StringBuilder reporte = new StringBuilder();
+
+        if ("Empleado".equals(seleccion)) {
+            String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del empleado:");
+            Empleado empleado = buscarEmpleadoPorId(idEmpleado);
+            if (empleado != null) {
+                reporte.append("Reporte de Empleado\n");
+                reporte.append("ID: ").append(empleado.getId()).append("\n");
+                reporte.append("Nombre: ").append(empleado.getNombre()).append("\n");
+                reporte.append("Apellido: ").append(empleado.getApellido()).append("\n");
+                reporte.append("Tipo: ").append(empleado.getTipoEmpleado()).append("\n");
+                reporte.append("Desempeño: ").append(empleado.getReporteDesempenio().getDesempenio()).append("\n");
+            } else {
+                reporte.append("Empleado no encontrado.");
+            }
+        } else if ("Departamento".equals(seleccion)) {
+            String idDepartamento = JOptionPane.showInputDialog("Ingrese el ID del departamento:");
+            Departamento departamento = buscarDepartamentoPorId(idDepartamento);
+            if (departamento != null) {
+                reporte.append("Reporte de Departamento\n");
+                reporte.append("ID: ").append(departamento.getId()).append("\n");
+                reporte.append("Nombre: ").append(departamento.getNombreDepartamento()).append("\n");
+                reporte.append("Descripción: ").append(departamento.getDescripcion()).append("\n");
+                reporte.append("Jefe: ").append(departamento.getJefe()).append("\n");
+            } else {
+                reporte.append("Departamento no encontrado.");
             }
         }
-        return null;
+
+        textArea.setText(reporte.toString());
     }
-
-
 }
