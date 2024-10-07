@@ -1,26 +1,38 @@
-public class ReporteDesempenio {
-    // Puntaje de desempeño
-    private int puntaje;
+import java.util.List;
 
-    public ReporteDesempenio() {
-        this.puntaje = (int)(Math.random() * 100); // Asignar un puntaje aleatorio de 0 a 100
+class ReporteDesempenio {
+    private String empleadoId;
+    private double desempenio; // Un valor entre 0 y 100
+
+    public ReporteDesempenio(String empleadoId, double desempenio) {
+        this.empleadoId = empleadoId;
+        this.desempenio = desempenio;
     }
 
-    @Override
-    public String toString() {
-        return "Puntaje: " + puntaje;
+    public String getEmpleadoId() {
+        return empleadoId;
     }
-    // Generacion reporte de desempeño para un empleado
-    public static String generarReporte(Empleado empleado) {
-        return "Reporte de Desempeño para " + empleado.getNombre() + ": " + empleado.getDesempenio().toString();
+
+    public double getDesempenio() {
+        return desempenio;
     }
-    // Generacion reporte de desempeño para un departamento
-    public static String generarReporte(Departamento departamento) {
-        StringBuilder reporte = new StringBuilder();
-        for (Empleado e : departamento.getEmpleados()) {
-            reporte.append(generarReporte(e)).append("\n");
+
+    public void setDesempenio(double desempenio) {
+        this.desempenio = desempenio;
+    }
+
+    public static double calcularPromedioDesempenio(List<Empleado> empleados) {
+        double suma = 0;
+        int count = 0;
+
+        for (Empleado empleado : empleados) {
+            // Suponiendo que ReporteDesempenio está en el empleado
+            if (empleado.getReporteDesempenio() != null) {
+                suma += empleado.getReporteDesempenio().getDesempenio();
+                count++;
+            }
         }
-        return reporte.toString();
+
+        return count > 0 ? suma / count : 0;
     }
 }
-

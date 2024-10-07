@@ -7,7 +7,7 @@ public abstract class Empleado {
     private String id;
     private String tipoEmpleado;
     private Date fechaInicio;
-    private ReporteDesempenio desempenio;
+    private ReporteDesempenio reporteDesempenio;
 
     // Constructor con departamento
     /*public Empleado(String nombre, String apellido, String id, String departamento, String tipoEmpleado, Date fechaInicio, ReporteDesempenio desempenio) {
@@ -27,7 +27,7 @@ public abstract class Empleado {
         this.id = id;
         this.tipoEmpleado = tipoEmpleado;
         this.fechaInicio = fechaInicio;
-        this.desempenio = desempenio;
+        this.reporteDesempenio = desempenio;
     }
 
     // Getters y Setters
@@ -66,11 +66,9 @@ public abstract class Empleado {
         this.fechaInicio = fechaInicio;
     }
 
-    public ReporteDesempenio getDesempenio() {
-        return desempenio;
-    }
-    public void setDesempenio(ReporteDesempenio desempenio) {
-        this.desempenio = desempenio;
+    public ReporteDesempenio getReporteDesempenio() {return reporteDesempenio;}
+
+    public void setReporteDesempenio(ReporteDesempenio reporteDesempenio) {this.reporteDesempenio = reporteDesempenio;
     }
 
     // Métodos
