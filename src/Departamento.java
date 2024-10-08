@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Departamento {
     private String id;
@@ -41,9 +42,10 @@ public class Departamento {
         this.jefe = jefe;
     }
 
-    public ArrayList<Empleado> getEmpleados() {
-        return empleados;
+    public List<Empleado> getEmpleados() {
+        return empleados;  // Suponiendo que 'empleados' es una lista de los empleados asignados al departamento
     }
+
 
     public void setEmpleados(ArrayList<Empleado> empleados) {
         this.empleados = empleados;
