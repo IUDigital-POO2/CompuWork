@@ -257,12 +257,14 @@ public class Main {
     private static void asignarEmpleadoADepartamento() {
         String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del empleado:");
         Empleado empleado = buscarEmpleadoPorId(idEmpleado);
+
         if (empleado != null) {
             String idDepartamento = JOptionPane.showInputDialog("Ingrese el ID del departamento:");
             Departamento departamento = buscarDepartamentoPorId(idDepartamento);
+
             if (departamento != null) {
-                // Asignar empleado al departamento (aquí debes implementar la lógica para la asignación)
-                JOptionPane.showMessageDialog(null, "Empleado " + empleado.getNombre() + " asignado al departamento " + departamento.getNombreDepartamento());
+                departamento.getEmpleados().add(empleado);  // Asignar empleado al departamento
+                JOptionPane.showMessageDialog(null, "Empleado asignado al departamento " + departamento.getNombreDepartamento());
             } else {
                 JOptionPane.showMessageDialog(null, "Departamento no encontrado.");
             }
@@ -289,12 +291,14 @@ public class Main {
         String seleccion = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de reporte:", "Generar Reporte",
                 JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
+        // Crear un StringBuilder para acumular el reporte
         StringBuilder reporte = new StringBuilder();
 
         if ("Empleado".equals(seleccion)) {
             String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del empleado:");
             Empleado empleado = buscarEmpleadoPorId(idEmpleado);
             if (empleado != null) {
+                // Generar el reporte para el empleado
                 reporte.append("Reporte de Empleado\n");
                 reporte.append("ID: ").append(empleado.getId()).append("\n");
                 reporte.append("Nombre: ").append(empleado.getNombre()).append("\n");
@@ -302,22 +306,50 @@ public class Main {
                 reporte.append("Tipo: ").append(empleado.getTipoEmpleado()).append("\n");
                 reporte.append("Desempeño: ").append(empleado.getReporteDesempenio().getDesempenio()).append("\n");
             } else {
+                // Mostrar mensaje de error en el textArea
                 reporte.append("Empleado no encontrado.");
             }
         } else if ("Departamento".equals(seleccion)) {
             String idDepartamento = JOptionPane.showInputDialog("Ingrese el ID del departamento:");
             Departamento departamento = buscarDepartamentoPorId(idDepartamento);
             if (departamento != null) {
+                // Generar el reporte para el departamento
                 reporte.append("Reporte de Departamento\n");
                 reporte.append("ID: ").append(departamento.getId()).append("\n");
                 reporte.append("Nombre: ").append(departamento.getNombreDepartamento()).append("\n");
                 reporte.append("Descripción: ").append(departamento.getDescripcion()).append("\n");
                 reporte.append("Jefe: ").append(departamento.getJefe()).append("\n");
+
+                // Mostrar empleados del departamento
+                List<Empleado> empleadosDepartamento = departamento.getEmpleados();
+                if (empleadosDepartamento != null && !empleadosDepartamento.isEmpty()) {
+                    double totalDesempenio = 0;
+                    int cantidadEmpleados = empleadosDepartamento.size();
+
+                    reporte.append("\nLista de Empleados:\n");
+                    for (Empleado empleado : empleadosDepartamento) {
+                        double desempenio = empleado.getReporteDesempenio().getDesempenio();
+                        reporte.append("ID: ").append(empleado.getId())
+                                .append(" - Nombre: ").append(empleado.getNombre())
+                                .append(" ").append(empleado.getApellido())
+                                .append(" - Desempeño: ").append(desempenio).append("\n");
+                        totalDesempenio += desempenio;
+                    }
+
+                    // Calcular promedio de desempeño
+                    double promedioDesempenio = totalDesempenio / cantidadEmpleados;
+                    reporte.append("\nPromedio de Desempeño del Departamento: ").append(promedioDesempenio).append("\n");
+                } else {
+                    reporte.append("No hay empleados asignados a este departamento.\n");
+                }
             } else {
+                // Mostrar mensaje de error en el textArea
                 reporte.append("Departamento no encontrado.");
             }
         }
 
+        // Finalmente, mostrar el contenido en el textArea
         textArea.setText(reporte.toString());
     }
 }
+
